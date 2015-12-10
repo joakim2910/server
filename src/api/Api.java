@@ -209,7 +209,7 @@ public class Api {
         }
     }
 
-    @PUT
+    @POST
     @Path("/games/join/")
     @Produces("application/json")
     public Response joinGame(String json) {
@@ -240,8 +240,8 @@ public class Api {
         }
     }
 
-Helllo
-    @PUT
+
+    @POST
     @Path("/games/start/")
     @Produces("application/json")
     public Response startGame(String json) {
@@ -272,7 +272,7 @@ Helllo
 
     }
 
-    @DELETE //DELETE-request fjernelse af data(spillet slettes)
+    @POST //POST-request fjernelse af data(spillet slettes)
     @Path("/games/{gameid}")
     @Produces("appication/json")
     public Response deleteGame(@PathParam("gameid") int gameId) {
