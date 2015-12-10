@@ -9,7 +9,7 @@
 *.war
 *.ear
 
-config.json
+src/config.json
 /out
 out/
 /lib

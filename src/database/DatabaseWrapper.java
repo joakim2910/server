@@ -1,10 +1,10 @@
 package database;
 
-import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
 import model.Game;
 import model.Gamer;
 import model.Score;
 import model.User;
+
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -443,9 +443,6 @@ public class DatabaseWrapper {
             createUser.setInt(6, user.getType());
 
             createUser.executeUpdate();
-        } catch(MySQLIntegrityConstraintViolationException m){
-            m.printStackTrace();
-            return false;
         }
         catch (SQLException sqlException)
         {
