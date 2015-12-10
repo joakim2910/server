@@ -108,13 +108,13 @@ public class Api {
             return Response
                     .status(200)
                     .entity("{\"message\":\"User was deleted\"}")
-                    .header("Access-Control-Allow-Headers", "*")
+                    .header("Access-Control-Allow-Origin", "*")
                     .build();
         } else {
             return Response
                     .status(400)
                     .entity("{\"message\":\"Failed. User was not deleted\"}")
-                    .header("Access-Control-Allow-Headers", "*")
+                    .header("Access-Control-Allow-Origin", "*")
                     .build();
         }
 
@@ -150,6 +150,7 @@ public class Api {
             return Response
                     .status(400)
                     .entity("{\"message\":\"Error in JSON\"}")
+                    .header("Access-Control-Allow-Headers", "*")
                     .header("Access-Control-Allow-Origin", "*")
                     .build();
         }
@@ -227,6 +228,7 @@ public class Api {
                 return Response
                         .status(400)
                         .entity("{\"message\":\"Game closed\"}")
+                        .header("Access-Control-Allow-Headers", "*")
                         .header("Access-Control-Allow-Origin", "*")
                         .build();
             }
@@ -235,6 +237,7 @@ public class Api {
             return Response
                     .status(400)
                     .entity("{\"message\":\"Error in JSON\"}")
+                    .header("Access-Control-Allow-Headers", "*")
                     .header("Access-Control-Allow-Origin", "*")
                     .build();
         }
@@ -253,6 +256,7 @@ public class Api {
                 return Response
                         .status(201)
                         .entity(new Gson().toJson(game))
+                        .header("Access-Control-Allow-Headers", "*")
                         .header("Access-Control-Allow-Origin", "*")
                         .build();
             } else {
@@ -266,6 +270,7 @@ public class Api {
             return Response
                     .status(400)
                     .entity("{\"message\":\"Error in JSON\"}")
+                    .header("Access-Control-Allow-Headers", "*")
                     .header("Access-Control-Allow-Origin", "*")
                     .build();
         }
@@ -283,12 +288,14 @@ public class Api {
             return Response
                     .status(200)
                     .entity("{\"message\":\"Game was deleted\"}")
+                    .header("Access-Control-Allow-Headers", "*")
                     .header("Access-Control-Allow-Origin", "*")
                     .build();
         } else {
             return Response
                     .status(400)
                     .entity("{\"message\":\"Failed. Game was not deleted\"}")
+                    .header("Access-Control-Allow-Headers", "*")
                     .header("Access-Control-Allow-Origin", "*")
                     .build();
         }
@@ -306,9 +313,14 @@ public class Api {
     @GET //"GET-request"
     @Path("/scores/")
     @Produces("application/json")
-    public String getHighscore(String data) {
+    public Response getHighscore(String data) {
 
-        return new Gson().toJson(Logic.getHighscore());
+        return Response
+                .status(201)
+                .entity(new Gson().toJson(Logic.getHighscore()))
+                .header("Access-Control-Allow-Origin", "*")
+                .build();
+
 
     }
 
